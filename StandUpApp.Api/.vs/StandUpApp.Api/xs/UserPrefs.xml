@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{1245EB1D-8F80-4F82-85AB-61FE8B01DA18}|Default">
+  <MonoDevelop.Ide.ItemProperties.StandUpApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/Controllers/NotesController.cs">
+    <Files>
+      <File FileName="StandUpApp.Api/Controllers/FileController.cs" Line="25" Column="29" />
+      <File FileName="StandUpApp.Api/Models/ImageModel.cs" />
+      <File FileName="StandUpApp.Api/appsettings.json" />
+      <File FileName="StandUpApp.Api/Startup.cs" />
+      <File FileName="StandUpApp.Api/Controllers/NotesController.cs" Line="188" Column="1" />
+      <File FileName="StandUpApp.Api/DAL/StandupContext.cs" />
+      <File FileName="StandUpApp.Api/Models/NoteModel.cs" />
+      <File FileName="StandUpApp.Api/Properties/launchSettings.json" />
+      <File FileName="StandUpApp.Api/Program.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="StandUpApp.Api" expanded="True">
+            <Node name="StandUpApp.Api" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="NotesController.cs" selected="True" />
+              </Node>
+              <Node name="DAL" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

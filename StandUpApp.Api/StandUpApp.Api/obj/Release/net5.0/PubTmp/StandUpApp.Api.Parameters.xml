@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="StandUpApp-Api" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^/Users/jaymattu/Projects/StandUpApp\.Api/StandUpApp\.Api/obj/Release/net5\.0/PubTmp/Out/$" />
+  </parameter>
+</parameters>
