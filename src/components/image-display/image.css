@@ -1,0 +1,14 @@
+/* .imageList{
+    width: 100px;
+  } */
+
+  .parent {
+    position: relative;
+    display: inline-block;
+  }
+      
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }

@@ -1,0 +1,8 @@
+.pageContainer{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* ToDO: Change to css grid */
