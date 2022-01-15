@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n3OZyddveRED3TiYuYXhpGk+0Ov/ahxUzNCNyHoUNEahEu6xqdpLx7T75GuhK06UnbhrqJPo/e8RQ1avgMrpHA==",
+  "dgSpecHash": "qy77AbPiHqTEwZ2JyRNku1TGAw1cJXYxk5Db/4ZvM8KKs4M8JsI4wZGDTTj0c8hcSlx165r62IoOW7Lo01Y4MQ==",
   "success": true,
-  "projectFilePath": "/Users/jay.mattu/Desktop/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
+  "projectFilePath": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
   "expectedPackageFiles": [
     "/Users/jay.mattu/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/jay.mattu/.nuget/packages/microsoft.aspnetcore.jsonpatch/5.0.11/microsoft.aspnetcore.jsonpatch.5.0.11.nupkg.sha512",

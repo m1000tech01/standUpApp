@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jay.mattu/Desktop/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj": {}
+    "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj": {}
   },
   "projects": {
-    "/Users/jay.mattu/Desktop/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj": {
+    "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jay.mattu/Desktop/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
+        "projectUniqueName": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
         "projectName": "StandUpApp.Api",
-        "projectPath": "/Users/jay.mattu/Desktop/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
+        "projectPath": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
         "packagesPath": "/Users/jay.mattu/.nuget/packages/",
-        "outputPath": "/Users/jay.mattu/Desktop/StandUpApp.Api/StandUpApp.Api/obj/",
+        "outputPath": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jay.mattu/.config/NuGet/NuGet.Config"

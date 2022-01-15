@@ -12,6 +12,8 @@ export default function Dashboard() {
   const [currentTreeViewData, setCurrentTreeViewData] = useState([]);
   const [currentTreeViewDataLoaded, setCurrentTreeViewDataLoaded] =
     useState(false);
+  const [createNewButtonInFolder, setCreateNewButtonInFolder] = useState(false);
+  const [currentFolderName, setCurrentFolderName] = useState("");
 
   const data = {
     name: "treeview",
@@ -105,7 +107,8 @@ export default function Dashboard() {
 
   //Create file action data*
   const handleFileOnClick = (file) => {
-    console.log(file);
+    setCurrentFolderName(file);
+    setCreateNewButtonInFolder(true);
   };
 
   const action = {
@@ -148,6 +151,9 @@ export default function Dashboard() {
   const handleCreateFolder = async () => {
     await NotesService.createFolder(currentInputState);
   };
+
+  const handleCreateNewNoteInFolder = async () => {};
+
   //TODO: Have button dashboard, so that we can open writing page if there is no data
   //in the database.
   const handleGoToWritingPage = async () => {
@@ -172,6 +178,7 @@ export default function Dashboard() {
             action={action} //optional
             collapseAll={{ collapseAll, handleCollapseAll }} //Optional
             decorator={treeDecorator} //Optional
+            //onFolderClick={(e) => handleFolderClick(e)}
           />
         ) : (
           "loading"
@@ -190,6 +197,14 @@ export default function Dashboard() {
         onClick={() => handleGoToWritingPage()}
         text={"Create New Note"}
       />
+      {createNewButtonInFolder ? (
+        <Button
+          onClick={() => handleCreateNewNoteInFolder()}
+          text={"Create New Note in " + currentFolderName.name}
+        />
+      ) : (
+        <> </>
+      )}
       <div className="flex justify-center mt-8">
         {currentData === undefined ? (
           "loading..."
