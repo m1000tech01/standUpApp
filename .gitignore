@@ -32,18 +32,18 @@ yarn-error.log*
 *.userprefs
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-build/
-bld/
-bin/
-Bin/
-obj/
-Obj/
+StandUpApp.Api/[Dd]ebug/
+StandUpApp.Api/[Dd]ebugPublic/
+StandUpApp.Api/[Rr]elease/
+StandUpApp.Api/[Rr]eleases/
+StandUpApp.Api/x64/
+StandUpApp.Api/x86/
+StandUpApp.Api/build/
+StandUpApp.Api/bld/
+StandUpApp.Api/bin/
+StandUpApp.Api/Bin/
+StandUpApp.Api/obj/
+StandUpApp.Api/Obj/
 
 # Visual Studio 2015 cache/options directory
 .vs/
