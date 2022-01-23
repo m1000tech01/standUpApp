@@ -152,7 +152,17 @@ export default function Dashboard() {
     await NotesService.createFolder(currentInputState);
   };
 
-  const handleCreateNewNoteInFolder = async () => {};
+  const handleCreateNewNoteInFolder = async () => {
+    let model = {
+      id: 0,
+      text: "welcome to your note",
+      folder: { name: currentFolderName.name },
+    };
+    let noteId = await NotesService.addorUpdate(model);
+    console.log(noteId);
+    const win = window.open("/writingpage/" + noteId, "_blank");
+    win.focus();
+  };
 
   //TODO: Have button dashboard, so that we can open writing page if there is no data
   //in the database.
@@ -162,7 +172,7 @@ export default function Dashboard() {
       text: "welcome to your note",
     };
     let noteId = await NotesService.addorUpdate(model);
-    console.log(noteId);
+    console.log("hello we are in the handleGoToWritingPage function ");
     const win = window.open("/writingpage/" + noteId, "_blank");
     win.focus();
   };

@@ -21,15 +21,18 @@ const getImages = async (id) => {
 
   let note = await NotesService.getNoteById(id);
   mapImages.note.id = id;
+  console.log(note.id);
   mapImages.note.text = note.text;
-  for (var i = 0; i < note.images.length; i++) {
-    let image = {
-      data: note.images[i].data,
-      mimeType: note.images[i].mimeType,
-      fileName: note.images[i].fileName,
-      id: note.images[i].id,
-    };
-    mapImages.images.push(image);
+  if (note.images != null) {
+    for (var i = 0; i < note.images.length; i++) {
+      let image = {
+        data: note.images[i].data,
+        mimeType: note.images[i].mimeType,
+        fileName: note.images[i].fileName,
+        id: note.images[i].id,
+      };
+      mapImages.images.push(image);
+    }
   }
   return mapImages;
 };

@@ -167,7 +167,7 @@ namespace StandUpApp.Api.Controllers
                 }
                 else
                 {
-                    var folder = await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
+                    var folder = note.Folder != null ? await _context.Folders.FirstOrDefaultAsync(x => x.Name.ToLower() == note.Folder.Name.ToLower()) : await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
                     note.Name = DateTime.Now.Ticks.ToString();
                     note.CreationDate = DateTime.Now;
                     note.FolderId = folder.Id;
