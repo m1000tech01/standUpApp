@@ -12,94 +12,8 @@ export default function Dashboard() {
   const [currentTreeViewData, setCurrentTreeViewData] = useState([]);
   const [currentTreeViewDataLoaded, setCurrentTreeViewDataLoaded] =
     useState(false);
-  const [createNewButtonInFolder, setCreateNewButtonInFolder] = useState(false);
+  const [createNewButtonInFolder, setCreateNewButtonInFolder] = useState(true);
   const [currentFolderName, setCurrentFolderName] = useState("");
-
-  const data = {
-    name: "treeview",
-    id: 1,
-    toggled: true,
-    child: [
-      {
-        name: "folder1",
-        id: 2,
-        test: "test",
-        number: 3,
-        child: [
-          {
-            name: "folder2",
-            id: 5,
-            child: [
-              { name: "file3.py", id: 6, child: [] },
-              { name: "file4.cpp", id: 7, child: [] },
-            ],
-          },
-          { name: "file1.js", id: 3, child: [] },
-          { name: "file2.ts", id: 4, child: [] },
-        ],
-      },
-    ],
-  };
-  const dataString = {
-    name: "notes",
-    id: 0,
-    toggled: true,
-    child: [
-      { name: "637711823070187860", id: 8, child: [] },
-      { name: "637723898039536030", id: 9, child: [] },
-      { name: "637723898039536030", id: 10, child: [] },
-      { name: "637729945917641250", id: 11, child: [] },
-    ],
-  };
-
-  const dataString2 = JSON.parse(
-    '{"name":"notes","id":0,"toggled":true,"child":[{"name":"637711823070187860","id":8,"child":[]},{"name":"637723898039536030","id":9,"child":[]},{"name":"637723898039536030","id":10,"child":[]},{"name":"637729945917641250","id":11,"child":[]}]}'
-  );
-  const data3 = {
-    name: "notes",
-    id: 1,
-    toggled: true,
-    child: [
-      {
-        name: "637711823070187860",
-        id: 6,
-        child: [],
-      },
-      {
-        name: "637723898039536030",
-        id: 3,
-        child: [],
-      },
-    ],
-  };
-
-  const data2 = {
-    name: "notes",
-    id: 0,
-    toggled: true,
-    child: [
-      {
-        name: "637711823070187860",
-        id: 8,
-        child: [],
-      },
-      {
-        name: "637723898039536030",
-        id: 8,
-        child: [],
-      },
-      {
-        name: "637723898039536030",
-        id: 10,
-        child: [],
-      },
-      {
-        name: "637729945917641250",
-        id: 11,
-        child: [],
-      },
-    ],
-  };
 
   //create Collapse button data
   const [collapseAll, setCollapseAll] = useState(false);
@@ -150,6 +64,8 @@ export default function Dashboard() {
 
   const handleCreateFolder = async () => {
     await NotesService.createFolder(currentInputState);
+    let response = await NotesService.getNoteTreeViewStructure();
+    setCurrentTreeViewData(response);
   };
 
   const handleCreateNewNoteInFolder = async () => {

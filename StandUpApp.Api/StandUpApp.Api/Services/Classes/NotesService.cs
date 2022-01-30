@@ -102,15 +102,19 @@ namespace StandUpApp.Api.Services.Classes
             foreach (var folder in folders)
             {
                 var result = await _context.Notes.FirstOrDefaultAsync(x => x.FolderId == folder.Id);
-                if(result == null)
+                
+                if (result == null)
                 {
-                    childs.Add(new ChildViewModel
+                    if(childs.FirstOrDefault(x => x.name.ToLower() == folder.Name) == null)
                     {
-                        name = folder.Name,
-                        id = folder.Id,
-                        isfolder = true,
-                        child = new List<ChildViewModel>()
-                    });
+                        childs.Add(new ChildViewModel
+                        {
+                            name = folder.Name,
+                            id = folder.Id,
+                            isfolder = true,
+                            child = new List<ChildViewModel>()
+                        });
+                    }
                 }
             }
             //var folders = _context.Folders.Where(x => !x.Notes.Select(y => y.FolderId).Contains(x.Id)).ToList();
