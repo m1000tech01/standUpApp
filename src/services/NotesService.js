@@ -1,6 +1,23 @@
+//let Base64 = require('base-64');
+
 const notesService = "https://localhost:5001/notes/";
 const fileService = "https://localhost:5001/file";
 const folderService = "https://localhost:5001/folder/";
+// const trackService = "https://trackery.signos.io:443/kinetic";
+// const password = "Signos2021!";
+// const username = "Kinetic";
+// const secret = Buffer.from(username + ":" + password).toString("base64");
+// let headers = new Headers();
+// headers.set("Authorisation", "Basic " + secret);
+
+// const postTrack = async () => {
+//   let response = await fetch(trackService, {
+//     method: "POST",
+//     headers: headers,
+//   });
+//   response = await response.json();
+//   return response;
+// };
 
 const getAll = async () => {
   let response = await fetch(notesService + "getnotes");
@@ -72,4 +89,5 @@ export default {
   getNoteById,
   getNoteTreeViewStructure,
   createFolder,
+  //postTrack,
 };

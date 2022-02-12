@@ -51,7 +51,7 @@ export default function Dashboard() {
       setCurrentTreeViewDataLoaded(true);
       console.log(response);
       //console.log(data);
-      console.log(currentTreeViewData);
+      console.log("this is the current tree view data" + currentTreeViewData);
     }
     getNotes();
     getFileTreeview();
@@ -118,6 +118,10 @@ export default function Dashboard() {
         value={currentInputState}
       ></input>
       {console.log(currentInputState)}
+      {/* <Button
+        onClick={() => NotesService.postTrack()}
+        text={"Test Track Service"}
+      /> */}
       <Button onClick={() => handleCreateFolder()} text={"Create New Folder"} />
       <Button
         onClick={() => handleGoToWritingPage()}

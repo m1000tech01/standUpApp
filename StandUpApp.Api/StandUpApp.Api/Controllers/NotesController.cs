@@ -171,9 +171,12 @@ namespace StandUpApp.Api.Controllers
                     note.Name = DateTime.Now.Ticks.ToString();
                     note.CreationDate = DateTime.Now;
                     note.FolderId = folder.Id;
+                    note.Folder = folder;
                     var newnote = await _context.Notes.AddAsync(note);
                     await _context.SaveChangesAsync();
-
+                    folder = await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null && x.Name == folder.Name);
+                    _context.Folders.Remove(folder);
+                    _context.SaveChanges();
                     return Ok(newnote.Entity.Id);
                 }
             }
