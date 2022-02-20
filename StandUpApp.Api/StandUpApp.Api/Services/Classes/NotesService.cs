@@ -64,80 +64,38 @@ namespace StandUpApp.Api.Services.Classes
         {
             var notes = await GetAllNotes();
             var childs = new List<ChildViewModel>();
-            
-            foreach (var note in notes)
+
+            var folders = _context.Folders.ToList();
+            foreach (var folder in folders)
             {
-                var folder = await _context.Folders.FirstOrDefaultAsync(x => x.Id == note.FolderId);
-                if (note.FolderId == 1)
-                {
-                        childs.Add(new ChildViewModel
-                        {
-                            name = note.Name,
-                            id = note.Id,
-                            isfolder = false,
+                var notesperfolder = await _context.Notes.Where(x => x.FolderId == folder.Id).ToListAsync();
+
+                var addedfolder =new ChildViewModel{
+                            name = folder.Name,
+                            id = folder.CreationDate.Ticks,
+                            isfolder = true,
                             child = new List<ChildViewModel>()
-                        });
-                }
-                else if (note.FolderId == folder.Id)
-                {
-                    var child = new ChildViewModel
-                    {
-                        name = folder.Name,
-                        id = folder.Id,
-                        isfolder = true,
-                        child = new List<ChildViewModel>()
                     };
-                    child.child.Add(new ChildViewModel
+                
+                foreach (var note in notesperfolder)
+                {
+                    addedfolder.child.Add(new ChildViewModel
                     {
                         name = note.Name,
                         id = note.Id,
                         isfolder = false,
                         child = new List<ChildViewModel>()
                     });
-                    childs.Add(child);
                 }
-                
-            }
-            var folders = _context.Folders.ToList();
-            foreach (var folder in folders)
-            {
-                var result = await _context.Notes.FirstOrDefaultAsync(x => x.FolderId == folder.Id);
-                
-                if (result == null)
+                if (notesperfolder.Count== 0) 
+                addedfolder.child.Add(new ChildViewModel
                 {
-                    if(childs.FirstOrDefault(x => x.name.ToLower() == folder.Name) == null)
-                    {
-                        childs.Add(new ChildViewModel
-                        {
-                            name = folder.Name,
-                            id = folder.Id,
-                            isfolder = true,
-                            child = new List<ChildViewModel>()
-                        });
-                    }
-                }
+                    name="",
+                    isfolder = false,
+                    child = new List<ChildViewModel>()
+                });
+                childs.Add(addedfolder);
             }
-            //var folders = _context.Folders.Where(x => !x.Notes.Select(y => y.FolderId).Contains(x.Id)).ToList();
-            //var folders1 = _context.Folders.Where(x => x.Notes.Select(y => y.FolderId).FirstOrDefault() != x.Id).ToList();
-            //foreach (var folder in _context.Folders)
-            //{
-            //    //foreach (var note in _context.Notes)
-            //    {
-            //        if(_context.Folders.FirstOrDefault(x => x.Id == note.FolderId) == null) {
-            //            //if (folder.Id != note.FolderId)
-            //            {
-            //                var child = new ChildViewModel
-            //                {
-            //                    name = folder.Name,
-            //                    id = folder.Id,
-            //                    isfolder = true,
-            //                    child = new List<ChildViewModel>()
-            //                };
-            //                childs.Add(child);
-            //            }
-            //        }
-            //    }
-            //}
 
 
             return new

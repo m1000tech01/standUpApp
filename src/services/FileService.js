@@ -1,6 +1,6 @@
 import NotesService from "./NotesService";
 
-const fileService = "https://localhost:5001/file";
+const fileService = "https://localhost:44337/file";
 
 const updateFile = async (fileName, file, id) => {
   let formdata = new FormData();

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using StandUpApp.Api.Services.Interfaces;
+using StandUpApp.Api.ViewModels;
+using System.Data.Entity.Core.Objects;
 
 namespace StandUpApp.Api.Controllers
 {
@@ -148,7 +150,7 @@ namespace StandUpApp.Api.Controllers
 
         [HttpPut("[action]/{id}")]
         [EnableCors("Policy1")]
-        public async Task<IActionResult> AddOrUpdate([FromBody] NoteModel note, int id)
+        public async Task<IActionResult> AddOrUpdate([FromBody] AddOrUpdateNoteViewModel note, int id)
         {
 
             if (note != null)
@@ -167,17 +169,31 @@ namespace StandUpApp.Api.Controllers
                 }
                 else
                 {
-                    var folder = note.Folder != null ? await _context.Folders.FirstOrDefaultAsync(x => x.Name.ToLower() == note.Folder.Name.ToLower()) : await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
-                    note.Name = DateTime.Now.Ticks.ToString();
-                    note.CreationDate = DateTime.Now;
-                    note.FolderId = folder.Id;
-                    note.Folder = folder;
-                    var newnote = await _context.Notes.AddAsync(note);
-                    await _context.SaveChangesAsync();
-                    folder = await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null && x.Name == folder.Name);
-                    _context.Folders.Remove(folder);
-                    _context.SaveChanges();
-                    return Ok(newnote.Entity.Id);
+                    //var folder = note.Folder != null ? await _context.Folders.FirstOrDefaultAsync(x => x.Name.ToLower() == note.Folder.Name.ToLower()) : await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
+                    try
+                    {
+                        var foldercreationdate = new DateTime(note.FolderId);
+                        var x = await _context.Folders.FirstOrDefaultAsync(x => x.Id == 4);
+                 
+                        var folder = note.FolderId != 0 ? await _context.Folders.FirstOrDefaultAsync(x =>x.CreationDate.Year==foldercreationdate.Year && x.CreationDate.Month == foldercreationdate.Month && x.CreationDate.Day == foldercreationdate.Day && x.CreationDate.Hour == foldercreationdate.Hour && x.CreationDate.Minute == foldercreationdate.Minute && x.CreationDate.Second == foldercreationdate.Second) : await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
+                        var noteentity = new NoteModel();
+                        noteentity.Name = DateTime.Now.Ticks.ToString();
+                        noteentity.CreationDate = DateTime.Now;
+                        noteentity.FolderId = folder.Id;
+                        noteentity.Folder = folder;
+                        var newnote = await _context.Notes.AddAsync(noteentity);
+                        await _context.SaveChangesAsync();
+                        //folder = await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null && x.Name == folder.Name);
+                        //_context.Folders.Remove(folder);
+                        //_context.SaveChanges();
+                        return Ok(newnote.Entity.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Ok();
+                        throw;
+                    }
+                    
                 }
             }
 

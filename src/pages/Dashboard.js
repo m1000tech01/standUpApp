@@ -14,6 +14,7 @@ export default function Dashboard() {
     useState(false);
   const [createNewButtonInFolder, setCreateNewButtonInFolder] = useState(true);
   const [currentFolderName, setCurrentFolderName] = useState("");
+  const [currentFolderId, setCurrentFolderId] = useState(0);
 
   //create Collapse button data
   const [collapseAll, setCollapseAll] = useState(false);
@@ -21,7 +22,16 @@ export default function Dashboard() {
 
   //Create file action data*
   const handleFileOnClick = (file) => {
-    setCurrentFolderName(file);
+    currentTreeViewData.child.forEach(folder => {
+      folder.child.forEach(note => {
+        if (file.name===note.name && file.id===note.id)
+        {
+          setCurrentFolderName(folder);
+          setCurrentFolderId(folder.id);
+        }
+      });
+    });
+    //setCurrentFolderName(file);
     setCreateNewButtonInFolder(true);
   };
 
@@ -72,7 +82,7 @@ export default function Dashboard() {
     let model = {
       id: 0,
       text: "welcome to your note",
-      folder: { name: currentFolderName.name },
+      folder: currentTreeViewData,
     };
     let noteId = await NotesService.addorUpdate(model);
     console.log(noteId);
@@ -83,9 +93,12 @@ export default function Dashboard() {
   //TODO: Have button dashboard, so that we can open writing page if there is no data
   //in the database.
   const handleGoToWritingPage = async () => {
+    let folderid=parseInt(currentFolderId);
     let model = {
       id: 0,
       text: "welcome to your note",
+      folderId: folderid,
+
     };
     let noteId = await NotesService.addorUpdate(model);
     console.log("hello we are in the handleGoToWritingPage function ");
@@ -104,7 +117,8 @@ export default function Dashboard() {
             action={action} //optional
             collapseAll={{ collapseAll, handleCollapseAll }} //Optional
             decorator={treeDecorator} //Optional
-            //onFolderClick={(e) => handleFolderClick(e)}
+            onClick={(e) => handleFileOnClick(e)}
+            
           />
         ) : (
           "loading"

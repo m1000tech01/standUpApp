@@ -1,26 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj": {}
+    "C:\\workspace\\stand\\standUpApp\\StandUpApp.Api\\StandUpApp.Api\\StandUpApp.Api.csproj": {}
   },
   "projects": {
-    "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj": {
+    "C:\\workspace\\stand\\standUpApp\\StandUpApp.Api\\StandUpApp.Api\\StandUpApp.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
+        "projectUniqueName": "C:\\workspace\\stand\\standUpApp\\StandUpApp.Api\\StandUpApp.Api\\StandUpApp.Api.csproj",
         "projectName": "StandUpApp.Api",
-        "projectPath": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/StandUpApp.Api.csproj",
-        "packagesPath": "/Users/jay.mattu/.nuget/packages/",
-        "outputPath": "/Users/jay.mattu/Desktop/standupsite/standupsite/StandUpApp.Api/StandUpApp.Api/obj/",
+        "projectPath": "C:\\workspace\\stand\\standUpApp\\StandUpApp.Api\\StandUpApp.Api\\StandUpApp.Api.csproj",
+        "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
+        "outputPath": "C:\\workspace\\stand\\standUpApp\\StandUpApp.Api\\StandUpApp.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jay.mattu/.config/NuGet/NuGet.Config"
+          "C:\\Users\\Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/Iberfabric-npm/nuget/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/Iberfabric-vNext-Templates/nuget/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/Iberfabric-vNext/nuget/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/Iberfabric/nuget/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/Omnicanalidad/nuget/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/Soporte/nuget/v3/index.json": {},
+          "https://msibercaja.pkgs.visualstudio.com/_packaging/TransaccionesHost/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/osliceintl/000518f1-3ba1-4241-94e5-7b6cf0555983/_packaging/SignosPlatform/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -38,6 +48,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[5.0.11, )"
@@ -75,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
