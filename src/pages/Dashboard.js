@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../components/button/button";
 import NotesService from "../services/NotesService";
 import { useHistory } from "react-router-dom";
-import FileTree from "react-file-treeview";
+import FileTree from "../components/filetree/FileTree";
 
 //Todo: Breadcrumb/Tree view finder for pages.
 
