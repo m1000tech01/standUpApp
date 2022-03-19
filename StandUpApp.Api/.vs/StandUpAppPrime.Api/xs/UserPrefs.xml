@@ -3,13 +3,13 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/Controllers/NotesController.cs">
     <Files>
       <File FileName="StandUpApp.Api/Services/Classes/FolderService.cs" Line="1" Column="1" />
-      <File FileName="StandUpApp.Api/Controllers/FolderController.cs" Line="1" Column="1" />
+      <File FileName="StandUpApp.Api/Controllers/FolderController.cs" />
       <File FileName="StandUpApp.Api/Controllers/NotesController.cs" Line="39" Column="1" />
-      <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" Line="13" Column="40" />
-      <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" Line="109" Column="22" />
-      <File FileName="StandUpApp.Api/Models/FolderModel.cs" Line="8" Column="1" />
-      <File FileName="StandUpApp.Api/ViewModels/NoteViewModel.cs" Line="1" Column="1" />
-      <File FileName="StandUpApp.Api/Models/NoteModel.cs" Line="1" Column="1" />
+      <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" />
+      <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" />
+      <File FileName="StandUpApp.Api/Models/FolderModel.cs" />
+      <File FileName="StandUpApp.Api/ViewModels/NoteViewModel.cs" />
+      <File FileName="StandUpApp.Api/Models/NoteModel.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,11 +27,6 @@
               <Node name="ViewModels" expanded="True" />
             </Node>
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>folders</Value>
         </State>
       </Pad>
     </Pads>

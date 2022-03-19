@@ -1,8 +1,8 @@
 //let Base64 = require('base-64');
 
-const notesService = "https://localhost:44337/notes/";
-const fileService = "https://localhost:44337/file";
-const folderService = "https://localhost:44337/folder/";
+const notesService = "https://localhost:5001/notes/";
+const fileService = "https://localhost:5001/file";
+const folderService = "https://localhost:5001/folder/";
 // const trackService = "https://trackery.signos.io:443/kinetic";
 // const password = "Signos2021!";
 // const username = "Kinetic";

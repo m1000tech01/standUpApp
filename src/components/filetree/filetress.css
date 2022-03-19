@@ -1,0 +1,22 @@
+.folder {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  padding-left: 1em;
+  overflow: hidden;
+}
+.folder:hover {
+  background-color: hsl(0, 0, 87);
+}
+.folder.is-active {
+  font-weight: bold;
+}
+
+.folder-container {
+  display: none;
+  padding-left: 2em;
+}
+.folder-container.is-active {
+  display: block;
+}

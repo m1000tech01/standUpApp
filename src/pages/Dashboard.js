@@ -3,6 +3,7 @@ import Button from "../components/button/button";
 import NotesService from "../services/NotesService";
 import { useHistory } from "react-router-dom";
 import FileTree from "../components/filetree/FileTree";
+import Navbar from "../components/navBar/NavBar";
 
 //Todo: Breadcrumb/Tree view finder for pages.
 
@@ -22,10 +23,9 @@ export default function Dashboard() {
 
   //Create file action data*
   const handleFileOnClick = (file) => {
-    currentTreeViewData.child.forEach(folder => {
-      folder.child.forEach(note => {
-        if (file.name===note.name && file.id===note.id)
-        {
+    currentTreeViewData.child.forEach((folder) => {
+      folder.child.forEach((note) => {
+        if (file.name === note.name && file.id === note.id) {
           setCurrentFolderName(folder);
           setCurrentFolderId(folder.id);
         }
@@ -93,12 +93,11 @@ export default function Dashboard() {
   //TODO: Have button dashboard, so that we can open writing page if there is no data
   //in the database.
   const handleGoToWritingPage = async () => {
-    let folderid=parseInt(currentFolderId);
+    let folderid = parseInt(currentFolderId);
     let model = {
       id: 0,
       text: "welcome to your note",
       folderId: folderid,
-
     };
     let noteId = await NotesService.addorUpdate(model);
     console.log("hello we are in the handleGoToWritingPage function ");
@@ -108,7 +107,7 @@ export default function Dashboard() {
   <td onClick={() => window.open("someLink", "_blank")}>text</td>;
   return (
     <div>
-      <h1 className="text-center">Stand Up App</h1>
+      <Navbar />
       <div>
         <button onClick={() => setCollapseAll(true)}>Collapse All</button>
         {currentTreeViewDataLoaded === true ? (
@@ -118,7 +117,6 @@ export default function Dashboard() {
             collapseAll={{ collapseAll, handleCollapseAll }} //Optional
             decorator={treeDecorator} //Optional
             onClick={(e) => handleFileOnClick(e)}
-            
           />
         ) : (
           "loading"
