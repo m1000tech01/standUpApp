@@ -3,7 +3,7 @@ import Button from "../components/button/button";
 import NotesService from "../services/NotesService";
 import { useHistory } from "react-router-dom";
 import FileTree from "../components/filetree/FileTree";
-import Navbar from "../components/navBar/NavBar";
+import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
 
 //Todo: Breadcrumb/Tree view finder for pages.
 
@@ -107,7 +107,7 @@ export default function Dashboard() {
   <td onClick={() => window.open("someLink", "_blank")}>text</td>;
   return (
     <div>
-      <Navbar />
+      <NavbarDashboard />
       <div>
         <button onClick={() => setCollapseAll(true)}>Collapse All</button>
         {currentTreeViewDataLoaded === true ? (

@@ -1,0 +1,10 @@
+.buttonDashboard {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 13px;
+  min-width: 208px;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
