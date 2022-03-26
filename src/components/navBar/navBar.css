@@ -1,4 +1,4 @@
-.nav {
+/* .nav {
   background: hsl(0, 0, 95);
   border-right: 1px solid hsl(0, 0, 80);
   border-right: 1px solid hsl(0, 0, 80);
@@ -10,4 +10,17 @@
   overflow-y: scroll;
   min-height: auto;
   width: auto;
+} */
+
+.nav-bar-dashboard {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1em 3em;
+  height: 5em;
+  background-color: #f7f7f7;
+  margin-top: 1em;
+  border-top: 1px solid rgb(204, 204, 204);
+  box-shadow: 0 2px 5px 0 rgba(11, 10, 10, 0.16);
+  z-index: 1;
 }

@@ -9,7 +9,7 @@ const Navbar = () => {
   //   };
 
   return (
-    <nav className="nav">
+    <nav className="nav-bar-dashboard">
       <h1>Standup App</h1>
       {/* <div className="menu-icon" onClick={handleClick}>
         <i className={active ? "fas fa-times" : "fas fa-bars"}></i>
