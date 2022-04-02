@@ -9,6 +9,7 @@ import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
 
 export default function Dashboard() {
   const [currentData, setCurrentDataState] = useState([]);
+  const [bodyClick, setCurrentBodyClick] = useState(true);
   const [currentInputState, setCurrentInputState] = useState("");
   const [currentTreeViewData, setCurrentTreeViewData] = useState([]);
   const [currentTreeViewDataLoaded, setCurrentTreeViewDataLoaded] =
@@ -33,6 +34,11 @@ export default function Dashboard() {
     });
     //setCurrentFolderName(file);
     setCreateNewButtonInFolder(true);
+  };
+
+  const onBodyClick = (e) => {
+    setCurrentBodyClick(!bodyClick);
+    console.log("getting here +", bodyClick);
   };
 
   const action = {
@@ -106,8 +112,8 @@ export default function Dashboard() {
   };
   <td onClick={() => window.open("someLink", "_blank")}>text</td>;
   return (
-    <div>
-      <NavbarDashboard />
+    <div onClick={(e) => onBodyClick(e)}>
+      <NavbarDashboard hasBeenClickedOutside={bodyClick} />
       <div>
         <button onClick={() => setCollapseAll(true)}>Collapse All</button>
         {currentTreeViewDataLoaded === true ? (

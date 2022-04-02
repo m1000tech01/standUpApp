@@ -4,14 +4,14 @@
     <Files>
       <File FileName="StandUpApp.Api/Services/Classes/FolderService.cs" Line="1" Column="1" />
       <File FileName="StandUpApp.Api/Controllers/FolderController.cs" />
-      <File FileName="StandUpApp.Api/Controllers/NotesController.cs" Line="39" Column="1" />
+      <File FileName="StandUpApp.Api/Controllers/NotesController.cs" />
       <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" />
       <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" />
       <File FileName="StandUpApp.Api/Models/FolderModel.cs" />
       <File FileName="StandUpApp.Api/ViewModels/NoteViewModel.cs" />
       <File FileName="StandUpApp.Api/Models/NoteModel.cs" />
-      <File FileName="StandUpApp.Api/WeatherForecast.cs" Line="1" Column="1" />
-      <File FileName="StandUpApp.Api/Startup.cs" Line="1" Column="1" />
+      <File FileName="StandUpApp.Api/WeatherForecast.cs" />
+      <File FileName="StandUpApp.Api/Startup.cs" Line="36" Column="182" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
