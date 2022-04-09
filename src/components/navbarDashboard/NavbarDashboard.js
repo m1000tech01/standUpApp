@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import ButtonDashBoard from "../button-dashboard/buttonDashboard";
 import "./navBar.css";
 
-const NavbarDashboard = ({ bodyClick }) => {
-  const [displayFolder, setDisplayFolder] = useState(true);
+const NavbarDashboard = ({ bodyClick, onNavBarOutsideClick }) => {
+  const [displayFolder, setDisplayFolder] = useState(false);
 
   const handleDisplayCreateNewFolders = () => {
     setDisplayFolder(!displayFolder);
-    console.log("getting here + ", displayFolder);
+    console.log("getting here for display folder + ", displayFolder);
   };
 
   return (
@@ -20,13 +20,13 @@ const NavbarDashboard = ({ bodyClick }) => {
           onClick={(e) => handleDisplayCreateNewFolders(e)}
         >
           <button className="dropdown">▼</button>
-          {!bodyClick && displayFolder ? (
+          {!bodyClick && !displayFolder ? (
             <></>
           ) : (
-            <ul class="dropdown-elements">
+            <ul className="dropdown-elements">
               <li>
                 <button>
-                  <i class="folder-items">create_new_folder</i>New folder...
+                  <i className="folder-items">create_new_folder</i>New folder...
                 </button>
               </li>
             </ul>

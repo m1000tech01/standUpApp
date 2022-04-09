@@ -16,7 +16,30 @@ namespace StandUpApp.Api.DAL
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<NoteModel>();
+            modelBuilder.Entity<FolderModel>().HasData(new FolderModel {
+                 Id = 1,
+                 Name = "Root",
+                 CreationDate = DateTime.Now,
+                 CreatedBy = "Jaz",
+                 ParentID = 0,
+                 ModificationDate = DateTime.Now,
+            });
+               
+            modelBuilder.Entity<NoteModel>().HasData(new NoteModel
+            {
+
+                Id = 1,
+                Author = "Jaz",
+                CreatedBy = "Jaz",
+                CreationDate = DateTime.Now,
+                FolderId = 1,
+                ModificationDate = DateTime.Now,
+                ModifiedBy = "Jaz",
+                Name = "Scripted Test note",
+                Text = "Welcome to the note generated in C# code"
+
+
+            }) ;
 
         }
     }
