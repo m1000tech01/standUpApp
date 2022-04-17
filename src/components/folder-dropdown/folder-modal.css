@@ -1,0 +1,50 @@
+.modal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsla(0,0,0,.5);
+    z-index: 100;
+}
+.modal {
+    display: block;
+    position: relative;
+    bottom: 5em;
+    padding: 2em;
+    width: auto;
+}
+.modal h2 {
+    font-size: 1.5em;
+}
+.modal form {
+    position: relative;
+}
+.modal input {
+    border: 1px solid hsl(0,0,30);
+    padding: .3em .5em;
+    width: 20em;
+    height: auto;
+}
+.modal input:focus {
+    border-color: rgb(66,133,244);
+}
+.modal__buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1em;
+}
+.modal button:not(.--close) {
+    min-width: 8em;
+    text-transform: none;
+    margin-left: 1.5em;
+}
+.modal button[type] {
+    background-color: hsl(0,0,90);
+    color: hsl(0,0,30);
+    border: 1px solid hsl(0,0,70);
+    font-weight: bold;
+}

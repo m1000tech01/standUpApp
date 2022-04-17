@@ -4,13 +4,13 @@ import NotesService from "../services/NotesService";
 import { useHistory } from "react-router-dom";
 import FileTree from "../components/filetree/FileTree";
 import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
+import "./dashboard.css";
 
 //Todo: Breadcrumb/Tree view finder for pages.
 
 export default function Dashboard() {
   const [currentData, setCurrentDataState] = useState([]);
-  const [bodyClick, setCurrentBodyClick] = useState(false);
-  const [onNavBarOutsideClick, setOnNavBarOutsideClick] = useState(false);
+  const [bodyClick, setBodyClick] = useState(true);
   const [currentInputState, setCurrentInputState] = useState("");
   const [currentTreeViewData, setCurrentTreeViewData] = useState([]);
   const [currentTreeViewDataLoaded, setCurrentTreeViewDataLoaded] =
@@ -37,14 +37,8 @@ export default function Dashboard() {
     setCreateNewButtonInFolder(true);
   };
 
-  const onBodyClick = (e) => {
-    setCurrentBodyClick(true);
-    console.log("getting here +", bodyClick);
-  };
-
   const onNavBarClick = (e) => {
-    setOnNavBarOutsideClick(false);
-    console.log("getting here on NavBarClick +", onNavBarOutsideClick);
+    setBodyClick(false);
   };
 
   const action = {
@@ -116,16 +110,18 @@ export default function Dashboard() {
     const win = window.open("/writingpage/" + noteId, "_blank");
     win.focus();
   };
+
+  const handleOnBodyClick = async () => {
+    setBodyClick(true);
+  };
+
   <td onClick={() => window.open("someLink", "_blank")}>text</td>;
   return (
     <div>
       <div onClick={(e) => onNavBarClick(e)}>
-        <NavbarDashboard
-          hasBeenClickedInNavBar={onNavBarOutsideClick}
-          hasBeenClickedOutside={bodyClick}
-        />
+        <NavbarDashboard bodyClick={bodyClick} />
       </div>
-      <div onClick={(e) => onBodyClick(e)}>
+      <div className="dashboard-body" onClick={(e) => handleOnBodyClick(e)}>
         <div>
           <button onClick={() => setCollapseAll(true)}>Collapse All</button>
           {currentTreeViewDataLoaded === true ? (

@@ -12,6 +12,7 @@
   width: auto;
 } */
 
+
 .nav-bar-dashboard {
   display: flex;
   align-items: center;
@@ -54,7 +55,7 @@
   color: #4d4d4d;
   border: none;
 }
-.dropdown button {
+.dropdown-menu-button {
   display: flex;
   align-items: center;
   background: transparent;
@@ -77,13 +78,18 @@
   margin-right: 0.5em;
 }
 
-.dropdown-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: red;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 16%);
+ ul li {
+  list-style-type: none;
 }
+
+.dropdown-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
 
 .folder-items{
   font-weight: normal;
