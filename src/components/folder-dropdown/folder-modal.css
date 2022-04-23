@@ -1,4 +1,4 @@
-.modal-container {
+/* .modal-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -47,4 +47,28 @@
     color: hsl(0,0,30);
     border: 1px solid hsl(0,0,70);
     font-weight: bold;
+} */
+
+.modal-button-right{
+
+    width: 100px;
+    margin-right: 16px !important;
+    background-color: #4285f4;
+  color: white;
+  border: none;
+  font-size: 13px;
+  border-radius: 3px;
+  height: 30px;
+
+}
+
+.modal-button-left{
+    height: 30px;
+    width: 100px;
+    background-color: #4285f4;
+  color: white;
+  border: none;
+  font-size: 13px;
+  border-radius: 3px;
+    
 }

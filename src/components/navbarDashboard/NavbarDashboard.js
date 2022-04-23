@@ -8,6 +8,7 @@ import FolderModal from "../folder-dropdown/folder-modal";
 
 const NavbarDashboard = ({ bodyClick }) => {
   const [clickNavbar, setClickNavbar] = useState(false);
+  const [clickNewButton, setClickNewButton] = useState(false);
   //const [folderName, setFolderName] = useState("");
 
   const handleNavBarOnClick = async (e) => {
@@ -21,6 +22,10 @@ const NavbarDashboard = ({ bodyClick }) => {
       //PARENT
       setClickNavbar(true);
     }
+  };
+
+  const handleNewButtonClick = (e) => {
+    setClickNewButton(true);
   };
 
   return (
@@ -51,9 +56,10 @@ const NavbarDashboard = ({ bodyClick }) => {
               </li>
             </ul>
           )}
+          {/* {clickNewButton === true ? <FolderModal /> : <></>} */}
         </div>
       </div>
-      <ButtonDashBoard text="NEW" />
+      <ButtonDashBoard text="NEW" onClick={(e) => handleNewButtonClick(e)} />
     </nav>
   );
 };

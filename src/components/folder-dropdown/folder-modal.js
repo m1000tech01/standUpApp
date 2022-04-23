@@ -6,6 +6,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import ButtonDashBoard from "../button-dashboard/buttonDashboard";
+import "./folder-modal.css";
 
 const FolderModal = () => {
   const [open, setOpen] = useState(false);
@@ -26,20 +28,20 @@ const FolderModal = () => {
           <DialogContentText>
             To subscribe to this website, please enter your email address here.
             We will send updates occasionally.
+            <TextField
+              variant="outlined"
+              color="secondary"
+              hiddenLabel
+              fullWidth
+              label="Folder Name"
+              id="margin-none"
+              margin="normal"
+            />
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <ButtonDashBoard text="Cancel" className="modal-button-left" />
+          <ButtonDashBoard text="Create" className="modal-button-right" />
         </DialogActions>
       </Dialog>
     </div>
