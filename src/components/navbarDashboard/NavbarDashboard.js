@@ -5,10 +5,18 @@ import "./navBar.css";
 import Icon from "@mui/material/Icon";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import FolderModal from "../folder-dropdown/folder-modal";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const NavbarDashboard = ({ bodyClick }) => {
   const [clickNavbar, setClickNavbar] = useState(false);
   const [clickNewButton, setClickNewButton] = useState(false);
+  const [open, setOpen] = useState(false);
   //const [folderName, setFolderName] = useState("");
 
   const handleNavBarOnClick = async (e) => {
@@ -16,6 +24,8 @@ const NavbarDashboard = ({ bodyClick }) => {
     if (e.target !== e.currentTarget) {
       //CHILD
       setClickNavbar(false);
+      console.log("getting event " + e);
+
       // await NotesService.createFolder(currentInputState);
       // let response = await NotesService.getNoteTreeViewStructure();
     } else {
@@ -25,13 +35,56 @@ const NavbarDashboard = ({ bodyClick }) => {
   };
 
   const handleNewButtonClick = (e) => {
+    console.log("getting here handleNewButtonClick " + clickNewButton);
     setClickNewButton(true);
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const ModalDialog = () => {
+    return (
+      <div>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Subscribe</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To subscribe to this website, please enter your email address
+              here. We will send updates occasionally.
+              <TextField
+                variant="outlined"
+                color="secondary"
+                hiddenLabel
+                fullWidth
+                label="Folder Name"
+                id="margin-none"
+                margin="normal"
+              />
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <ButtonDashBoard
+              text="Cancel"
+              className="modal-button-left"
+              onClick={handleClose}
+            />
+            <ButtonDashBoard text="Create" className="modal-button-right" />
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  };
+
   return (
-    <nav className="nav-bar-dashboard" onClick={(e) => handleNavBarOnClick(e)}>
+    <nav className="nav-bar-dashboard">
       <h1>Standup App</h1>
       <div className="breadcrumb-container">
+        <div>{open === true ? <ModalDialog /> : <></>}</div>
         <div className="breadcrumb">My Drive</div>
         <div className="dropdown-container" id="dropdown-container">
           <button className="dropdown">▼</button>
@@ -45,21 +98,22 @@ const NavbarDashboard = ({ bodyClick }) => {
                   //onClick={(e) => handleNavDropDown(e)}
                   className="dropdown-menu-button"
                 >
-                  <i className="folder-items">
-                    <Icon>
-                      <CreateNewFolderIcon />
-                    </Icon>
-                  </i>
-                  New folder...
-                  <FolderModal />
+                  <div onClick={handleClickOpen}>
+                    <i className="folder-items">
+                      <Icon>
+                        <CreateNewFolderIcon />
+                      </Icon>
+                    </i>
+                    New folder...
+                  </div>
+                  <div>{open === true ? <ModalDialog /> : <></>}</div>
                 </button>
               </li>
             </ul>
           )}
-          {/* {clickNewButton === true ? <FolderModal /> : <></>} */}
         </div>
       </div>
-      <ButtonDashBoard text="NEW" onClick={(e) => handleNewButtonClick(e)} />
+      <ButtonDashBoard text="NEW" onClick={(e) => handleClickOpen(e)} />
     </nav>
   );
 };
