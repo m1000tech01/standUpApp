@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ButtonDashBoard from "../button-dashboard/buttonDashboard";
-//import NotesService from "../services/NotesService";
+import NotesService from "../../services/NotesService";
 import "./navBar.css";
 import Icon from "@mui/material/Icon";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
@@ -17,7 +17,7 @@ const NavbarDashboard = ({ bodyClick }) => {
   const [clickNavbar, setClickNavbar] = useState(false);
   const [clickNewButton, setClickNewButton] = useState(false);
   const [open, setOpen] = useState(false);
-  //const [folderName, setFolderName] = useState("");
+  const [folderName, setFolderName] = useState("");
 
   const handleNavBarOnClick = async (e) => {
     //setClickNavbar(e.target === e.currentTarget);
@@ -47,6 +47,16 @@ const NavbarDashboard = ({ bodyClick }) => {
     setOpen(false);
   };
 
+  const handleCreate = async () => {
+    setOpen(false);
+    await NotesService.createFolder(folderName);
+  };
+
+  const handleSetFolderName = (e) => {
+    setFolderName(e.target.value);
+    console.log(folderName);
+  };
+
   const ModalDialog = () => {
     return (
       <div>
@@ -64,6 +74,7 @@ const NavbarDashboard = ({ bodyClick }) => {
                 label="Folder Name"
                 id="margin-none"
                 margin="normal"
+                onKeyDown={(e) => handleSetFolderName(e)}
               />
             </DialogContentText>
           </DialogContent>
@@ -73,7 +84,11 @@ const NavbarDashboard = ({ bodyClick }) => {
               className="modal-button-left"
               onClick={handleClose}
             />
-            <ButtonDashBoard text="Create" className="modal-button-right" />
+            <ButtonDashBoard
+              text="Create"
+              className="modal-button-right"
+              onClick={handleCreate}
+            />
           </DialogActions>
         </Dialog>
       </div>
