@@ -53,14 +53,17 @@ const NavbarDashboard = ({ bodyClick }) => {
   };
 
   const handleSetFolderName = (e) => {
-    setFolderName(e.target.value);
+    let newfolderName = e.target.value;
+    e.stopPropagation();
+    e.preventDefault();
+    setFolderName(newfolderName);
     console.log(folderName);
   };
 
   const ModalDialog = () => {
     return (
       <div>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} disableEnforceFocus>
           <DialogTitle>Subscribe</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -73,8 +76,9 @@ const NavbarDashboard = ({ bodyClick }) => {
                 fullWidth
                 label="Folder Name"
                 id="margin-none"
+                value={folderName}
                 margin="normal"
-                onKeyDown={(e) => handleSetFolderName(e)}
+                onChange={(e) => setFolderName(e.target.value)}
               />
             </DialogContentText>
           </DialogContent>

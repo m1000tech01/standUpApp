@@ -4,6 +4,7 @@ import NotesService from "../services/NotesService";
 import { useHistory } from "react-router-dom";
 import FileTree from "../components/filetree/FileTree";
 import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
+import TextField from "@mui/material/TextField";
 import "./dashboard.css";
 
 //Todo: Breadcrumb/Tree view finder for pages.
@@ -18,6 +19,7 @@ export default function Dashboard() {
   const [createNewButtonInFolder, setCreateNewButtonInFolder] = useState(true);
   const [currentFolderName, setCurrentFolderName] = useState("");
   const [currentFolderId, setCurrentFolderId] = useState(0);
+  const [value, setValue] = useState("");
 
   //create Collapse button data
   const [collapseAll, setCollapseAll] = useState(false);
@@ -143,6 +145,13 @@ export default function Dashboard() {
           onChange={(e) => setCurrentInputState(e.target.value)}
           value={currentInputState}
         ></input>
+        <TextField
+          id="outlined-basic"
+          label="Outlined"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          variant="outlined"
+        />
         {console.log(currentInputState)}
         {/* <Button
         onClick={() => NotesService.postTrack()}
