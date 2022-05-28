@@ -18,6 +18,7 @@ const NavbarDashboard = ({ bodyClick }) => {
   const [clickNewButton, setClickNewButton] = useState(false);
   const [open, setOpen] = useState(false);
   const [folderName, setFolderName] = useState("");
+  const [folderName2, setFolderName2] = useState();
 
   const handleNavBarOnClick = async (e) => {
     //setClickNavbar(e.target === e.currentTarget);
@@ -63,24 +64,31 @@ const NavbarDashboard = ({ bodyClick }) => {
   const ModalDialog = () => {
     return (
       <div>
-        <Dialog open={open} onClose={handleClose} disableEnforceFocus>
+        <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Subscribe</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <form>
               To subscribe to this website, please enter your email address
               here. We will send updates occasionally.
-              <TextField
+              {/* <TextField
                 variant="outlined"
                 color="secondary"
                 hiddenLabel
                 fullWidth
                 label="Folder Name"
                 id="margin-none"
-                value={folderName}
+                // value={folderName}
                 margin="normal"
-                onChange={(e) => setFolderName(e.target.value)}
-              />
-            </DialogContentText>
+                onChange={}
+              /> */}
+              <input
+                type="text"
+                value={folderName}
+                onChange={(e) => {
+                  setFolderName(e.target.value);
+                }}
+              ></input>
+            </form>
           </DialogContent>
           <DialogActions>
             <ButtonDashBoard
