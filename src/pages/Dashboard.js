@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import FileTree from "../components/filetree/FileTree";
 import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
 import TextField from "@mui/material/TextField";
+import NotesContainer from "../components/notes-container/NotesContainer";
 import "./dashboard.css";
 
 //Todo: Breadcrumb/Tree view finder for pages.
@@ -20,6 +21,8 @@ export default function Dashboard() {
   const [currentFolderName, setCurrentFolderName] = useState("");
   const [currentFolderId, setCurrentFolderId] = useState(0);
   const [value, setValue] = useState("");
+  const [notesContainerData, setNotesContainerData] = useState("");
+  const [currentContainerDataLoaded, setContainerDataLoaded] = useState(false);
 
   //create Collapse button data
   const [collapseAll, setCollapseAll] = useState(false);
@@ -60,6 +63,8 @@ export default function Dashboard() {
     async function getNotes() {
       let response = await NotesService.getAll();
       setCurrentDataState(response);
+      setNotesContainerData(response);
+      setContainerDataLoaded(true);
       console.log(response);
     }
     async function getFileTreeview() {
@@ -210,6 +215,11 @@ export default function Dashboard() {
             </div>
           )}
         </div>
+        {currentContainerDataLoaded === true ? (
+          <NotesContainer data={notesContainerData} />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

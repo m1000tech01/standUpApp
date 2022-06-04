@@ -1,18 +1,9 @@
 ﻿<Properties StartupConfiguration="{1245EB1D-8F80-4F82-85AB-61FE8B01DA18}|Default">
   <MonoDevelop.Ide.ItemProperties.StandUpApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/DAL/StandupContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/Services/Classes/NotesService.cs">
     <Files>
-      <File FileName="StandUpApp.Api/Services/Classes/FolderService.cs" Line="1" Column="1" />
-      <File FileName="StandUpApp.Api/Controllers/FolderController.cs" />
-      <File FileName="StandUpApp.Api/Controllers/NotesController.cs" />
-      <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" />
-      <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" />
-      <File FileName="StandUpApp.Api/Models/FolderModel.cs" />
-      <File FileName="StandUpApp.Api/ViewModels/NoteViewModel.cs" />
-      <File FileName="StandUpApp.Api/Models/NoteModel.cs" />
-      <File FileName="StandUpApp.Api/WeatherForecast.cs" />
-      <File FileName="StandUpApp.Api/Startup.cs" />
-      <File FileName="StandUpApp.Api/DAL/StandupContext.cs" Line="23" Column="36" />
+      <File FileName="StandUpApp.Api/Controllers/NotesController.cs" Line="32" Column="54" />
+      <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" Line="21" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,12 +11,12 @@
           <Node name="StandUpAppPrime.Api" expanded="True">
             <Node name="StandUpApp.Api" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="DAL" expanded="True">
-                <Node name="StandupContext.cs" selected="True" />
-              </Node>
+              <Node name="DAL" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
+                <Node name="Classes" expanded="True">
+                  <Node name="NotesService.cs" selected="True" />
+                </Node>
                 <Node name="Interfaces" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
