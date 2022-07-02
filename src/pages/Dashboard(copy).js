@@ -6,7 +6,6 @@ import FileTree from "../components/filetree/FileTree";
 import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
 import TextField from "@mui/material/TextField";
 import NotesContainer from "../components/notes-container/NotesContainer";
-import CardThumbnail from "../components/card-thumbnail/CardThumbnail";
 import "./dashboard.css";
 
 //Todo: Breadcrumb/Tree view finder for pages.
@@ -130,25 +129,55 @@ export default function Dashboard() {
         <NavbarDashboard bodyClick={bodyClick} />
       </div>
       <div className="dashboard-body" onClick={(e) => handleOnBodyClick(e)}>
-        <div className="thumbnail-fileTree-container">
-          <div className="fileTree-container">
-            <button onClick={() => setCollapseAll(true)}>Collapse All</button>
-            {currentTreeViewDataLoaded === true ? (
-              <FileTree
-                data={currentTreeViewData}
-                action={action} //optional
-                collapseAll={{ collapseAll, handleCollapseAll }} //Optional
-                decorator={treeDecorator} //Optional
-                onClick={(e) => handleFileOnClick(e)}
-              />
-            ) : (
-              "loading"
-            )}
-          </div>
-          <div className="thumbnail-container">
-            <NotesContainer data={currentTreeViewData} />
-          </div>
+        <div>
+          <button onClick={() => setCollapseAll(true)}>Collapse All</button>
+          {currentTreeViewDataLoaded === true ? (
+            <FileTree
+              data={currentTreeViewData}
+              action={action} //optional
+              collapseAll={{ collapseAll, handleCollapseAll }} //Optional
+              decorator={treeDecorator} //Optional
+              onClick={(e) => handleFileOnClick(e)}
+            />
+          ) : (
+            "loading"
+          )}
         </div>
+        <input
+          type="text"
+          id="folderName"
+          name="folderName"
+          onChange={(e) => setCurrentInputState(e.target.value)}
+          value={currentInputState}
+        ></input>
+        <TextField
+          id="outlined-basic"
+          label="Outlined"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          variant="outlined"
+        />
+        {console.log(currentInputState)}
+        {/* <Button
+        onClick={() => NotesService.postTrack()}
+        text={"Test Track Service"}
+      /> */}
+        <Button
+          onClick={() => handleCreateFolder()}
+          text={"Create New Folder"}
+        />
+        <Button
+          onClick={() => handleGoToWritingPage()}
+          text={"Create New Note"}
+        />
+        {createNewButtonInFolder ? (
+          <Button
+            onClick={() => handleCreateNewNoteInFolder()}
+            text={"Create New Note in " + currentFolderName.name}
+          />
+        ) : (
+          <> </>
+        )}
         <div className="flex justify-center mt-8">
           {currentData === undefined ? (
             "loading..."

@@ -1,10 +1,20 @@
 import React from "react";
-import NoteCard from "../note-card/NoteCard";
+import CardThumbnail from "../card-thumbnail/CardThumbnail";
+//import NoteCard from "../note-card/NoteCard";
+import "./notes-container.css";
 
 const NotesContainer = (props) => {
-  return props.data.map((note) => {
-    <NoteCard text="test string" />;
-  });
+  return (
+    <div className="container">
+      {props.data !== "" ? (
+        props.data.map((option) => (
+          <CardThumbnail text={"test note"}>{option.name}</CardThumbnail>
+        ))
+      ) : (
+        <></>
+      )}
+    </div>
+  );
 };
 
 export default NotesContainer;
