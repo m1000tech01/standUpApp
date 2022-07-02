@@ -6,13 +6,11 @@ import "./notes-container.css";
 const NotesContainer = (props) => {
   return (
     <div className="container">
-      {props.data !== "" ? (
-        props.data.map((option) => (
-          <CardThumbnail text={"test note"}>{option.name}</CardThumbnail>
-        ))
-      ) : (
-        <></>
-      )}
+      {props.data.length > 0
+        ? props.data.map((option) => (
+            <CardThumbnail text={"test note"}>{option.name}</CardThumbnail>
+          ))
+        : "loading"}
     </div>
   );
 };
