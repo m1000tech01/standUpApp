@@ -1,9 +1,38 @@
-.container{
-    display:flex;
-    color: rgb(190, 190, 200);
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 7px;
 }
 
 .container > div {
     padding: 30px;
     margin: 10px;
+}
+
+/* @media(min-width: 320px){
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 20px;
+        row-gap: 7px;
+    }
+} */
+
+@media(max-width: 800px){
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 7px;
+    }
+}
+
+@media(max-width: 1600px){
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 7px;
+    }
 }

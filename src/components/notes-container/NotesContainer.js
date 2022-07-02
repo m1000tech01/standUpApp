@@ -8,9 +8,10 @@ const NotesContainer = (props) => {
     <div className="container">
       {props.data.length > 0
         ? props.data.map((option) => (
-            <CardThumbnail text={"test note"}>{option.name}</CardThumbnail>
+            <CardThumbnail text={option.text}>{option.name}</CardThumbnail>
           ))
         : "loading"}
+      {console.log(props.data)}
     </div>
   );
 };
