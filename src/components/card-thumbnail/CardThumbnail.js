@@ -5,11 +5,26 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import defaultImage from "../../images/DefaultImage.png";
 
 export default function CardThumbnail(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" alt="your note" height="140" image="" />
+      {props.encodedImg.length === 0 ? (
+        <CardMedia
+          component="img"
+          alt="your note is not working"
+          height="140"
+          image={defaultImage}
+        />
+      ) : (
+        <CardMedia
+          component="img"
+          alt="your note is working"
+          height="140"
+          src={`data:image/png;base64, ${props.encodedImg}`}
+        />
+      )}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {props.name}

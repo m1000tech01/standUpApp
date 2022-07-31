@@ -20,7 +20,7 @@ namespace StandUpApp.Api.Services.Classes
 
         public async Task<List<NoteModel>> GetAllNotes()
         {
-            var notes = await _context.Notes.Include(x => x.Labels).ToListAsync();
+            var notes = await _context.Notes.Include(x => x.Labels).Include(x => x.Images).ToListAsync();
             var folders = await _context.Folders.ToListAsync();
             if (folders.Count == 0)
             {
