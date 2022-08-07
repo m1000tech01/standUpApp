@@ -18,6 +18,23 @@ namespace StandUpApp.Api.Services.Classes
             _context = context;
         }
 
+        public async Task<bool> DeleteNoteById(int id)
+        {
+            bool result = false;
+            try
+            {
+                var record = await _context.Notes.FirstOrDefaultAsync(x => x.Id == id);
+                var deleterecord = _context.Remove(record);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _ = ex.Message;
+            }
+            return result;
+        }
+
         public async Task<List<NoteModel>> GetAllNotes()
         {
             var notes = await _context.Notes.Include(x => x.Labels).Include(x => x.Images).ToListAsync();

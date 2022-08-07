@@ -31,6 +31,18 @@ const getNoteById = async (id) => {
   return response;
 };
 
+const deleteNoteById = async (id) => {
+  let response = await fetch(`${notesService}${id}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  response = await response.json();
+  return response;
+};
+
 const getNoteTreeViewStructure = async () => {
   let response = await fetch(`${notesService}getnotestreeview`);
   response = await response.json();
@@ -89,5 +101,6 @@ export default {
   getNoteById,
   getNoteTreeViewStructure,
   createFolder,
+  deleteNoteById,
   //postTrack,
 };

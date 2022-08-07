@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StandUpApp.Api.Models;
 
@@ -41,6 +42,11 @@ namespace StandUpApp.Api.DAL
 
             }) ;
 
+        }
+
+        internal Task FirstOrDefaultAsync(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

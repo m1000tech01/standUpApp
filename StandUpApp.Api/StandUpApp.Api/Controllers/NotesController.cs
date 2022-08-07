@@ -174,8 +174,8 @@ namespace StandUpApp.Api.Controllers
                     {
                         var foldercreationdate = new DateTime(note.FolderId);
                         var x = await _context.Folders.FirstOrDefaultAsync(x => x.Id == 4);
-                 
-                        var folder = note.FolderId != 0 ? await _context.Folders.FirstOrDefaultAsync(x =>x.CreationDate.Year==foldercreationdate.Year && x.CreationDate.Month == foldercreationdate.Month && x.CreationDate.Day == foldercreationdate.Day && x.CreationDate.Hour == foldercreationdate.Hour && x.CreationDate.Minute == foldercreationdate.Minute && x.CreationDate.Second == foldercreationdate.Second) : await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
+
+                        var folder = note.FolderId != 0 ? await _context.Folders.FirstOrDefaultAsync(x => x.CreationDate.Year == foldercreationdate.Year && x.CreationDate.Month == foldercreationdate.Month && x.CreationDate.Day == foldercreationdate.Day && x.CreationDate.Hour == foldercreationdate.Hour && x.CreationDate.Minute == foldercreationdate.Minute && x.CreationDate.Second == foldercreationdate.Second) : await _context.Folders.FirstOrDefaultAsync(x => x.ParentID == null);
                         var noteentity = new NoteModel();
                         noteentity.Name = DateTime.Now.Ticks.ToString();
                         noteentity.CreationDate = DateTime.Now;
@@ -193,7 +193,7 @@ namespace StandUpApp.Api.Controllers
                         return Ok();
                         throw;
                     }
-                    
+
                 }
             }
 
@@ -201,18 +201,12 @@ namespace StandUpApp.Api.Controllers
         }
 
 
-        [HttpDelete("[action]")]
+        [HttpDelete("{Id}")]
         [EnableCors("Policy1")]
         public async Task<IActionResult> DeleteNote(int Id)
         {
-            if (Id > 0)
-            {
-                var note = _context.Notes.FirstOrDefault(x => x.Id == Id);
-                _context.Notes.Remove(note);
-                await _context.SaveChangesAsync();
-                return Ok(true);
-            }
-            return Ok(false);
+            var result = await _notesService.DeleteNoteById(Id);
+            return Ok(result);
         }
 
 
