@@ -3,10 +3,10 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/Startup.cs">
     <Files>
       <File FileName="StandUpApp.Api/Controllers/NotesController.cs" Line="210" Column="1" />
-      <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" Line="36" Column="1" />
+      <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" />
       <File FileName="StandUpApp.Api/Models/NoteModel.cs" />
-      <File FileName="StandUpApp.Api/Services/Classes/FolderService.cs" Line="1" Column="1" />
-      <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" Line="14" Column="43" />
+      <File FileName="StandUpApp.Api/Services/Classes/FolderService.cs" />
+      <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" />
       <File FileName="StandUpApp.Api/Startup.cs" Line="36" Column="1" />
     </Files>
     <Pads>

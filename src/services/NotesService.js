@@ -22,6 +22,7 @@ const folderService = "https://localhost:5001/folder/";
 const getAll = async () => {
   let response = await fetch(notesService + "getnotes");
   response = await response.json();
+  console.log("getting note " + response);
   return response;
 };
 

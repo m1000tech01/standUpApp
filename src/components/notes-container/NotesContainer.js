@@ -11,9 +11,9 @@ const thumbNailDisplay = (images) => {
 const NotesContainer = (props) => {
   const [deleteNote, setDeletedNote] = useState(false);
 
-  const handleDeleteThumbnail = (hasBeenDeleted) => {
-    setDeletedNote(hasBeenDeleted);
-    <Alert severity="error">You are about to delete the note!</Alert>;
+  const handleDeleteThumbnail = () => {
+    //setDeletedNote(hasBeenDeleted);
+    console.log("reaching handleDeleteThumbnail");
   };
 
   return (
@@ -24,7 +24,7 @@ const NotesContainer = (props) => {
               encodedImg={thumbNailDisplay(option?.images)}
               text={option.text}
               id={option.id}
-              parentDeleteCallback={handleDeleteThumbnail(deleteNote)}
+              parentDeleteCallback={handleDeleteThumbnail()}
             >
               {option.name}
             </CardThumbnail>

@@ -23,7 +23,8 @@ export default function Dashboard() {
   const [currentFolderId, setCurrentFolderId] = useState(0);
   const [value, setValue] = useState("");
   const [notesContainerData, setNotesContainerData] = useState("");
-  const [currentContainerDataLoaded, setContainerDataLoaded] = useState(false);
+  const [currentContainerDataLoaded, setCurrentContainerDataLoaded] =
+    useState(false);
 
   //create Collapse button data
   const [collapseAll, setCollapseAll] = useState(false);
@@ -65,9 +66,12 @@ export default function Dashboard() {
       let response = await NotesService.getAll();
       setCurrentDataState(response);
       setNotesContainerData(response);
-      setContainerDataLoaded(true);
+      //setCurrentContainerDataLoaded(true);
       console.log(response);
     }
+    getNotes();
+  }, []);
+  useEffect(() => {
     async function getFileTreeview() {
       let response = await NotesService.getNoteTreeViewStructure();
       setCurrentTreeViewData(response);
@@ -77,7 +81,6 @@ export default function Dashboard() {
       //console.log(data);
       console.log("this is the current tree view data" + currentTreeViewData);
     }
-    getNotes();
     getFileTreeview();
   }, []);
 
@@ -186,7 +189,7 @@ export default function Dashboard() {
             </div>
           )}
         </div>
-        {currentContainerDataLoaded === true ? (
+        {notesContainerData.length > 0 ? (
           <NotesContainer data={notesContainerData} />
         ) : (
           <></>

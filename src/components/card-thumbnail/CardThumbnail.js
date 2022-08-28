@@ -15,8 +15,8 @@ const handleClickedRow = (e, id) => {
 
 export default function CardThumbnail(props) {
   const handleDelete = useCallback((id) => {
-    var result = NotesService.deleteNoteById(id);
-    props.parentDeleteCallback(result);
+    // var result = NotesService.deleteNoteById(id);
+    props.parentDeleteCallback();
   });
 
   return (
