@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Button from "../components/button/button";
 import NotesService from "../services/NotesService";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,7 @@ import NavbarDashboard from "../components/navbarDashboard/NavbarDashboard";
 import TextField from "@mui/material/TextField";
 import NotesContainer from "../components/notes-container/NotesContainer";
 import CardThumbnail from "../components/card-thumbnail/CardThumbnail";
+import Grid from "@mui/material/Grid";
 import "./dashboard.css";
 
 //Todo: Breadcrumb/Tree view finder for pages.
@@ -25,6 +26,8 @@ export default function Dashboard() {
   const [notesContainerData, setNotesContainerData] = useState("");
   const [currentContainerDataLoaded, setCurrentContainerDataLoaded] =
     useState(false);
+
+  const [noteReloaded, setNoteReloaded] = useState(false);
 
   //create Collapse button data
   const [collapseAll, setCollapseAll] = useState(false);
@@ -52,6 +55,17 @@ export default function Dashboard() {
     fileOnClick: handleFileOnClick,
   };
 
+  const callBack = useCallback(
+    async (id) => {
+      let response = await NotesService.deleteNoteById(id);
+      if (response === true) {
+        setNoteReloaded(false);
+      }
+      console.log(response + " arriving here for deletion");
+    },
+    [noteReloaded]
+  );
+
   //Create Decoration data*
   const treeDecorator = {
     showIcon: true,
@@ -63,14 +77,17 @@ export default function Dashboard() {
   // Using useEffect to call the API once mounted and set the data
   useEffect(() => {
     async function getNotes() {
-      let response = await NotesService.getAll();
-      setCurrentDataState(response);
-      setNotesContainerData(response);
-      //setCurrentContainerDataLoaded(true);
-      console.log(response);
+      if (!noteReloaded) {
+        setNoteReloaded(true);
+        let response = await NotesService.getAll();
+        setCurrentDataState(response);
+        setNotesContainerData(response);
+        //setCurrentContainerDataLoaded(true);
+        console.log(response);
+      }
     }
     getNotes();
-  }, []);
+  }, [currentData, notesContainerData, noteReloaded]);
   useEffect(() => {
     async function getFileTreeview() {
       let response = await NotesService.getNoteTreeViewStructure();
@@ -129,72 +146,77 @@ export default function Dashboard() {
   <td onClick={() => window.open("someLink", "_blank")}>text</td>;
   return (
     <div>
-      <div onClick={(e) => onNavBarClick(e)}>
-        <NavbarDashboard bodyClick={bodyClick} />
-      </div>
-      <div className="dashboard-body" onClick={(e) => handleOnBodyClick(e)}>
-        <div className="thumbnail-fileTree-container">
-          <div className="fileTree-container">
-            <button onClick={() => setCollapseAll(true)}>Collapse All</button>
-            {currentTreeViewDataLoaded === true ? (
-              <FileTree
-                data={currentTreeViewData}
-                action={action} //optional
-                collapseAll={{ collapseAll, handleCollapseAll }} //Optional
-                decorator={treeDecorator} //Optional
-                onClick={(e) => handleFileOnClick(e)}
-              />
+      <Grid container spacing={3}>
+        <div onClick={(e) => onNavBarClick(e)}>
+          <NavbarDashboard bodyClick={bodyClick} />
+        </div>
+        <div className="dashboard-body" onClick={(e) => handleOnBodyClick(e)}>
+          <div className="thumbnail-fileTree-container">
+            <div className="fileTree-container">
+              <button onClick={() => setCollapseAll(true)}>Collapse All</button>
+              {currentTreeViewDataLoaded === true ? (
+                <FileTree
+                  data={currentTreeViewData}
+                  action={action} //optional
+                  collapseAll={{ collapseAll, handleCollapseAll }} //Optional
+                  decorator={treeDecorator} //Optional
+                  onClick={(e) => handleFileOnClick(e)}
+                />
+              ) : (
+                "loading"
+              )}
+            </div>
+            <div className="thumbnail-container">
+              <NotesContainer data={currentTreeViewData} />
+            </div>
+          </div>
+          <div className="flex justify-center mt-8">
+            {currentData === undefined ? (
+              "loading..."
             ) : (
-              "loading"
+              <div className="container">
+                <h1>Current Files</h1>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Text</th>
+                      <th>Author</th>
+                      <th>Label</th>
+                      <th>Last Modified</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentData.map((note) => (
+                      <tr
+                        key={note.id}
+                        onClick={(e) => handleClickedRow(e, note.id)}
+                      >
+                        <td>{note.text}</td>
+                        <td>{note.author}</td>
+                        <td>
+                          {note.labels.map((l) => (
+                            <span>{l.labelText + ","}</span>
+                          ))}
+                        </td>
+                        <td>{note.modificationDate}</td>
+                        <td />
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </div>
-          <div className="thumbnail-container">
-            <NotesContainer data={currentTreeViewData} />
-          </div>
-        </div>
-        <div className="flex justify-center mt-8">
-          {currentData === undefined ? (
-            "loading..."
+          {notesContainerData.length > 0 ? (
+            <NotesContainer
+              data={notesContainerData}
+              parentCallBack={callBack}
+            />
           ) : (
-            <div className="container">
-              <h1>Current Files</h1>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Text</th>
-                    <th>Author</th>
-                    <th>Label</th>
-                    <th>Last Modified</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentData.map((note) => (
-                    <tr
-                      key={note.id}
-                      onClick={(e) => handleClickedRow(e, note.id)}
-                    >
-                      <td>{note.text}</td>
-                      <td>{note.author}</td>
-                      <td>
-                        {note.labels.map((l) => (
-                          <span>{l.labelText + ","}</span>
-                        ))}
-                      </td>
-                      <td>{note.modificationDate}</td>
-                      <td />
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <></>
           )}
         </div>
-        {notesContainerData.length > 0 ? (
-          <NotesContainer data={notesContainerData} />
-        ) : (
-          <></>
-        )}
-      </div>
+      </Grid>
     </div>
   );
 }

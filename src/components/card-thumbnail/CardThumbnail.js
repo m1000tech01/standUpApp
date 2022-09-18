@@ -14,11 +14,6 @@ const handleClickedRow = (e, id) => {
 };
 
 export default function CardThumbnail(props) {
-  const handleDelete = useCallback((id) => {
-    // var result = NotesService.deleteNoteById(id);
-    props.parentDeleteCallback();
-  });
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       {props.encodedImg.length === 0 ? (
@@ -50,7 +45,7 @@ export default function CardThumbnail(props) {
         <Button size="small" onClick={(e) => handleClickedRow(e, props.id)}>
           Open
         </Button>
-        <Button size="small" onClick={async (e) => handleDelete(e, props.id)}>
+        <Button size="small" onClick={(e) => props.parentCallBack(props.id)}>
           Delete
         </Button>
       </CardActions>

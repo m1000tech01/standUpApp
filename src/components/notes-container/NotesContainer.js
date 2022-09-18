@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import CardThumbnail from "../card-thumbnail/CardThumbnail";
 //import NoteCard from "../note-card/NoteCard";
 import "./notes-container.css";
@@ -11,10 +11,17 @@ const thumbNailDisplay = (images) => {
 const NotesContainer = (props) => {
   const [deleteNote, setDeletedNote] = useState(false);
 
-  const handleDeleteThumbnail = () => {
+  const handleDeleteThumbnail = (id) => {
     //setDeletedNote(hasBeenDeleted);
     console.log("reaching handleDeleteThumbnail");
+    props.parentCallBack(id);
   };
+
+  const callBack = useCallback((id) => {
+    //TODO: Delete Note.
+    //TODO: Refresh/Reload notes.
+    console.log(id + " arriving here for deletion");
+  }, []);
 
   return (
     <div className="container">
@@ -24,7 +31,7 @@ const NotesContainer = (props) => {
               encodedImg={thumbNailDisplay(option?.images)}
               text={option.text}
               id={option.id}
-              parentDeleteCallback={handleDeleteThumbnail()}
+              parentCallBack={handleDeleteThumbnail}
             >
               {option.name}
             </CardThumbnail>
