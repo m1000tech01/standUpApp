@@ -146,7 +146,7 @@ export default function Dashboard() {
   <td onClick={() => window.open("someLink", "_blank")}>text</td>;
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         <div onClick={(e) => onNavBarClick(e)}>
           <NavbarDashboard bodyClick={bodyClick} />
         </div>
