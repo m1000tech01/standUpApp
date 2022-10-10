@@ -7,6 +7,7 @@ import GmailTreeView from "../components/googleStyleTreeView/GoogleStyleTreeView
 import AvatarChip from "../components/googleStyleNewButton/GoogleStyleNewButton";
 import NotesService from "../services/NotesService";
 import NotesContainer from "../components/notes-container/NotesContainer";
+import Button from "@mui/material/Button";
 
 export default function GoogleDriveDashboard() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -59,7 +60,9 @@ export default function GoogleDriveDashboard() {
           </Grid>
           <Grid container>
             <Grid>
-              <GmailTreeView />
+              <Button>
+                <GmailTreeView />
+              </Button>
             </Grid>
           </Grid>
         </Grid>
