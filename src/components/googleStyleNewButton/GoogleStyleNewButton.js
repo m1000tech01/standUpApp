@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
 import AddIcon from "@mui/icons-material/Add";
 
-export default function AvatarChip() {
+export default function GoogleStyleNewButton({ handleNewNote }) {
   return (
     <Chip
       sx={{ boxShadow: 3 }}
@@ -13,6 +13,7 @@ export default function AvatarChip() {
         </Avatar>
       }
       label="New"
+      onClick={handleNewNote}
     />
   );
 }

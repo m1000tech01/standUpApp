@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{1245EB1D-8F80-4F82-85AB-61FE8B01DA18}|Default">
   <MonoDevelop.Ide.ItemProperties.StandUpApp.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/Controllers/NotesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StandUpApp.Api/Services/Interfaces/IFolderService.cs">
     <Files>
       <File FileName="StandUpApp.Api/Controllers/NotesController.cs" Line="210" Column="1" />
       <File FileName="StandUpApp.Api/Services/Classes/NotesService.cs" />
@@ -8,20 +8,22 @@
       <File FileName="StandUpApp.Api/Services/Classes/FolderService.cs" />
       <File FileName="StandUpApp.Api/Services/Interfaces/INotesService.cs" />
       <File FileName="StandUpApp.Api/Startup.cs" />
+      <File FileName="StandUpApp.Api/Controllers/FolderController.cs" Line="32" Column="80" />
+      <File FileName="StandUpApp.Api/Services/Interfaces/IFolderService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StandUpAppPrime.Api" expanded="True">
             <Node name="StandUpApp.Api" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="NotesController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="DAL" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
+                <Node name="Interfaces" expanded="True">
+                  <Node name="IFolderService.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="ViewModels" expanded="True" />
             </Node>

@@ -30,5 +30,12 @@ namespace StandUpApp.Api.Services.Classes
 
             return folder.Id;
         }
+
+        public async Task<int?> GetRootId()
+        {
+            var folder = await _context.Folders.FirstOrDefaultAsync(x => x.Name.ToLower() == "root");
+            return folder?.Id;
+            
+        }
     }
 }

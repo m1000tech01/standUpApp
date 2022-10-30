@@ -24,5 +24,14 @@ namespace StandUpApp.Api.Controllers
         {
             return Ok(await _folderService.AddFolderToRoot(folder.FolderName));
         }
+
+        [HttpGet("[action]")]
+        [EnableCors("Policy1")]
+        public async Task<IActionResult> GetRootFolderID()
+        {
+            var folderId = await _folderService.GetRootId();
+            return Ok(folderId);
+        }
+
     }
 }

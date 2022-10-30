@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import GmailTreeView from "../components/googleStyleTreeView/GoogleStyleTreeView";
 import NotesService from "../services/NotesService";
 import NotesContainer from "../components/notes-container/NotesContainer";
-import AvatarChip from "../components/googleStyleNewButton/GoogleStyleNewButton";
+import GoogleStyleNewButton from "../components/googleStyleNewButton/GoogleStyleNewButton";
 
 export default function NewGoogleDriveDashboard() {
   const [notesContainerData, setNotesContainerData] = useState("");
@@ -47,6 +47,23 @@ export default function NewGoogleDriveDashboard() {
     [noteReloaded]
   );
 
+  const handleGoToWritingPage = async () => {
+    let rootId = await NotesService.getRootFolderID();
+    console.log(rootId);
+    let folderid = parseInt(rootId);
+    let model = {
+      id: 0,
+      text: "welcome to your note",
+      folderId: folderid,
+    };
+    console.log(model);
+    let noteId = await NotesService.addorUpdate(model);
+    console.log(rootId);
+    console.log("hello we are in the handleGoToWritingPage function ");
+    const win = window.open("/writingpage/" + noteId, "_blank");
+    win.focus();
+  };
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -69,7 +86,7 @@ export default function NewGoogleDriveDashboard() {
       <Grid container spacing={2} justify="center">
         <Grid item xs={12} sm={4}>
           <Grid sx={{ pl: 5, pt: 3 }}>
-            <AvatarChip />
+            <GoogleStyleNewButton handleNewNote={handleGoToWritingPage()} />
           </Grid>
           <Grid>
             <Button>

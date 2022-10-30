@@ -64,6 +64,18 @@ const createFolder = async (data) => {
   return response;
 };
 
+const getRootFolderID = async (data) => {
+  let response = await fetch(`${folderService}getrootfolderid`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  response = await response.json();
+  return response;
+};
+
 const update = async (data) => {
   let response = await fetch(notesService + "updatenote", {
     method: "PUT",
@@ -103,5 +115,6 @@ export default {
   getNoteTreeViewStructure,
   createFolder,
   deleteNoteById,
+  getRootFolderID,
   //postTrack,
 };
