@@ -46,6 +46,47 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   },
 }));
 
+const fileTreeData = [
+  {
+    id: 1,
+    label: "Standup",
+    subCatergories: [{ id: 8, label: "November Idea" }],
+  },
+  {
+    id: 2,
+    label: "Story",
+    subCatergories: [{ id: 9, label: "December Idea" }],
+  },
+  {
+    id: 3,
+    label: "Theatre Show",
+    subCatergories: [{ id: 10, label: "Feb Idea" }],
+  },
+  {
+    id: 4,
+    label: "Clown Show",
+    subCatergories: [
+      { id: 11, label: "2021 Idea" },
+      { id: 12, label: "2019 Idea" },
+    ],
+  },
+  {
+    id: 5,
+    label: "Absurd Show",
+    subCatergories: [{ id: 13, label: "Aug Idea" }],
+  },
+  {
+    id: 6,
+    label: "Stand Up Show",
+    subCatergories: [{ id: 14, label: "June Idea" }],
+  },
+  {
+    id: 7,
+    label: "Musical Idea",
+    subCatergories: [{ id: 15, label: "Jan Idea" }],
+  },
+];
+
 function StyledTreeItem(props) {
   const {
     bgColor,
@@ -90,6 +131,53 @@ StyledTreeItem.propTypes = {
 };
 
 export default function GmailTreeView() {
+  const renderFileTree = (nodes) => {
+    console.log(nodes);
+    return nodes.map((node) => {
+      let children = [];
+      node.subCatergories.map((child) => {
+        children.push(
+          <StyledTreeItem
+            nodeId={child.id}
+            labelText={child.label}
+            labelIcon={SupervisorAccountIcon}
+            labelInfo="90"
+            color="#1a73e8"
+            bgColor="#e8f0fe"
+          />
+        );
+      });
+
+      return (
+        <StyledTreeItem
+          nodeId={node.id}
+          labelText={node.label}
+          labelIcon={InfoIcon}
+          labelInfo=""
+          color="#e3742f"
+          bgColor="#fcefe3"
+        >
+          {children}
+          {/* {Array.isArray(nodes.subCatergories)
+          ? nodes.subCatergories.map((node) => renderFileTree(node))
+          : null} */}
+        </StyledTreeItem>
+      );
+    });
+    // <StyledTreeItem
+    //   nodeId={nodes.id}
+    //   labelText={nodes.label}
+    //   labelIcon={InfoIcon}
+    //   labelInfo={nodes.label}
+    //   color="#e3742f"
+    //   bgColor="#fcefe3"
+    // >
+    //   {Array.isArray(nodes.subCatergories)
+    //     ? nodes.subCatergories.map((node) => renderFileTree(node))
+    //     : null}
+    // </StyledTreeItem>
+  };
+
   return (
     <TreeView
       aria-label="gmail"
@@ -99,7 +187,16 @@ export default function GmailTreeView() {
       defaultEndIcon={<div style={{ width: 24 }} />}
       sx={{ height: 264, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
     >
-      <StyledTreeItem nodeId="1" labelText="All Mail" labelIcon={MailIcon} />
+      {renderFileTree(fileTreeData)}
+      <StyledTreeItem
+        nodeId="5"
+        labelText="Social"
+        labelIcon={SupervisorAccountIcon}
+        labelInfo="90"
+        color="#1a73e8"
+        bgColor="#e8f0fe"
+      />
+      {/* <StyledTreeItem nodeId="1" labelText="All Mail" labelIcon={MailIcon} />
       <StyledTreeItem nodeId="2" labelText="Trash" labelIcon={DeleteIcon} />
       <StyledTreeItem nodeId="3" labelText="Categories" labelIcon={Label}>
         <StyledTreeItem
@@ -135,7 +232,7 @@ export default function GmailTreeView() {
           bgColor="#e6f4ea"
         />
       </StyledTreeItem>
-      <StyledTreeItem nodeId="4" labelText="History" labelIcon={Label} />
+      <StyledTreeItem nodeId="4" labelText="History" labelIcon={Label} /> */}
     </TreeView>
   );
 }
