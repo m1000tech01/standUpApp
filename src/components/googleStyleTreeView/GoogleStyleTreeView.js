@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -14,6 +14,7 @@ import ForumIcon from "@mui/icons-material/Forum";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import NotesService from "../../services/NotesService";
 
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -50,40 +51,46 @@ const fileTreeData = [
   {
     id: 1,
     label: "Standup",
-    subCatergories: [{ id: 8, label: "November Idea" }],
+    isFolder: true,
+    subCatergories: [{ id: 8, label: "November Idea", isFolder: false }],
   },
   {
     id: 2,
     label: "Story",
-    subCatergories: [{ id: 9, label: "December Idea" }],
+    isFolder: true,
+    subCatergories: [{ id: 9, label: "December Idea", isFolder: false }],
   },
   {
     id: 3,
     label: "Theatre Show",
-    subCatergories: [{ id: 10, label: "Feb Idea" }],
+    isFolder: true,
+    subCatergories: [{ id: 10, label: "Feb Idea", isFolder: false }],
   },
   {
     id: 4,
     label: "Clown Show",
+    isFolder: true,
     subCatergories: [
-      { id: 11, label: "2021 Idea" },
-      { id: 12, label: "2019 Idea" },
+      { id: 11, label: "2021 Idea", isFolder: false },
+      { id: 12, label: "2019 Idea", isFolder: false },
     ],
   },
   {
     id: 5,
     label: "Absurd Show",
-    subCatergories: [{ id: 13, label: "Aug Idea" }],
+    isFolder: true,
+    subCatergories: [{ id: 13, label: "Aug Idea", isFolder: false }],
   },
   {
     id: 6,
     label: "Stand Up Show",
-    subCatergories: [{ id: 14, label: "June Idea" }],
+    isFolder: true,
+    subCatergories: [{ id: 14, label: "June Idea", isFolder: false }],
   },
   {
     id: 7,
     label: "Musical Idea",
-    subCatergories: [{ id: 15, label: "Jan Idea" }],
+    isFolder: false,
   },
 ];
 
@@ -96,6 +103,19 @@ function StyledTreeItem(props) {
     labelText,
     ...other
   } = props;
+
+  const mapFileTreeview = (data) => {
+    data = data.child;
+    for (let i = 0; i < data.length; i++) {}
+  };
+
+  useEffect(() => {
+    async function getFileTreeview() {
+      let response = await NotesService.getNoteTreeViewStructure();
+      let mapData = mapFileTreeview(response);
+    }
+    getFileTreeview();
+  }, []);
 
   return (
     <StyledTreeItemRoot
@@ -187,7 +207,7 @@ export default function GmailTreeView() {
       defaultEndIcon={<div style={{ width: 24 }} />}
       sx={{ height: 264, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
     >
-      {renderFileTree(fileTreeData)}
+      {fileTreeData === undefined ? <></> : renderFileTree(fileTreeData)}
       <StyledTreeItem
         nodeId="5"
         labelText="Social"
