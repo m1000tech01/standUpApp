@@ -40,6 +40,14 @@ namespace StandUpApp.Api.Controllers
             return Ok(await _notesService.GetNotesTreeViewWithFolders());
         }
 
+        [HttpGet("[action]")]
+        [EnableCors("Policy1")]
+        public async Task<IActionResult> GetNotesTreeViewWithSubCat()
+        {
+            //return Ok(await _notesService.GetNotesTreeView());
+            return Ok(await _notesService.GetNotesTreeViewWithFoldersAndSubCat());
+        }
+
 
         [HttpGet("[action]/{Id}")]
         [EnableCors("Policy1")]

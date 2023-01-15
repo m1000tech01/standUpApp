@@ -91,6 +91,13 @@ const fileTreeData = [
     id: 7,
     label: "Musical Idea",
     isFolder: false,
+    // subCatergories: [{ id: 15, label: "January 2023 Idea", isFolder: false }],
+  },
+  {
+    id: 8,
+    label: "Video Mood Board",
+    isFolder: false,
+    subCatergories: [],
   },
 ];
 
@@ -155,18 +162,19 @@ export default function GmailTreeView() {
     console.log(nodes);
     return nodes.map((node) => {
       let children = [];
-      node.subCatergories.map((child) => {
-        children.push(
-          <StyledTreeItem
-            nodeId={child.id}
-            labelText={child.label}
-            labelIcon={SupervisorAccountIcon}
-            labelInfo="90"
-            color="#1a73e8"
-            bgColor="#e8f0fe"
-          />
-        );
-      });
+      node.subCatergories &&
+        node.subCatergories.map((child) => {
+          children.push(
+            <StyledTreeItem
+              nodeId={child.id}
+              labelText={child.label}
+              labelIcon={SupervisorAccountIcon}
+              labelInfo="90"
+              color="#1a73e8"
+              bgColor="#e8f0fe"
+            />
+          );
+        });
 
       return (
         <StyledTreeItem

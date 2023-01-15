@@ -12,6 +12,7 @@ namespace StandUpApp.Api.Services.Interfaces
         Task<List<NoteModel>> GetAllNotes();
         Task<Object> GetNotesTreeViewWithFolders();
         Task<bool> DeleteNoteById(int id);
+        Task<Object> GetNotesTreeViewWithFoldersAndSubCat();
 
     }
 }

@@ -123,7 +123,56 @@ namespace StandUpApp.Api.Services.Classes
                 child = childs
             };
         }
+    
+
+    public async Task<Object> GetNotesTreeViewWithFoldersAndSubCat()
+    {
+        var notes = await GetAllNotes();
+            var subCatergories = new List<TreeViewNoteModel>();
+
+        var folders = _context.Folders.ToList();
+        foreach (var folder in folders)
+        {
+            var notesperfolder = await _context.Notes.Where(x => x.FolderId == folder.Id).ToListAsync();
+
+            var addedfolder = new TreeViewNoteModel
+            {
+                label = folder.Name,
+                id = folder.CreationDate.Ticks,
+                isfolder = true,
+                subCatergories = new List<TreeViewNoteModel>()
+            };
+
+            foreach (var note in notesperfolder)
+            {
+                addedfolder.subCatergories.Add(new TreeViewNoteModel
+                {
+                    label = note.Name,
+                    id = note.Id,
+                    isfolder = false,
+                    subCatergories = new List<TreeViewNoteModel>()
+                });
+            }
+            if (notesperfolder.Count == 0)
+                addedfolder.subCatergories.Add(new TreeViewNoteModel
+                {
+                    label = "",
+                    isfolder = false,
+                    subCatergories = new List<TreeViewNoteModel>()
+                });
+                subCatergories.Add(addedfolder);
+        }
+
+
+        return new TreeViewNoteModel()
+        {
+            label = "notes",
+            id = 0,
+            isfolder = false,
+            subCatergories = subCatergories
+        };
     }
+}
 }
 
 
